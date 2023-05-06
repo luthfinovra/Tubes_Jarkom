@@ -9,12 +9,12 @@
   <li>
     Luthfi Novra
     <br>
-    NIM: 1301213
+    NIM: 1301213454
   </li>
   <li>
     Anggara Abdul Rahim
     <br>
-    NIM : 1301213
+    NIM : 1301210567
   </li>
 </ol>
 
