@@ -1,4 +1,5 @@
 def htmlRenderer(search, data):
+    # Map Corresponding File Extension
     extensions = {
         "pdf": ["pdf"],
         "txt": ["txt"],
@@ -9,8 +10,11 @@ def htmlRenderer(search, data):
         "archive": ["zip", "rar"],
         "code": ["html", "css", "js", "py"]
     }
+
+    # Map File Name to Corresponding File Extension
     database_file = {k: [name for name in data if name.split(".")[-1] in v] for k, v in extensions.items()}
 
+    # Map File Types to the Corresponding Icon Name
     database_icon = {
         "pdf" : "pdf",
         "txt" : "alt",
@@ -33,7 +37,7 @@ def htmlRenderer(search, data):
         > {} </h5>
     </div>
     """
-
+    # List of Each Element that Represent a File Icon and File Name
     file_icons = [file_icon.format(database_icon[key], value) for key in database_file for value in database_file[key]]
     print(''.join(file_icons))
 
