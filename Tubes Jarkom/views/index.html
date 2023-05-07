@@ -4,8 +4,11 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@200;400;600;800&display=swap" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <title>Local Server</title>
     <style>
         input[type="text"],
@@ -17,22 +20,23 @@
       }
     </style>
 </head>
-<body style="background-color: #FFFFFF">
+<body style="background-color: #0D467F">
     <div class="flex flex-col items-center text-white">
-        <div style="font-family: 'Lexend'; color: #383838" class="pt-20 text-4xl">
-            Tugas Besar Jaringan Komputer
+        <div style="font-weight: 800; font-family: Lexend;" class="pt-20 text-4xl">
+            DATABASE
         </div>
-        <div style="font-family: 'Lexend'; color: #383838" class="m-2 text-lg">
-            Database
-        </div>
+        <div style="height: 0.4px; width: 300px; background-color: #898989;"></div>
+        <div style="font-weight: 200; font-family: Lexend;"class="text-sm">Kelompok 7 | IF-45-12</div>
         <div class="pt-10 px-10">
-            <form action="" method="POST" enctype="multipart/form-data">
-                <input type="text" id="searchFile" name="searchFile" style="background-color: #FFFFFF; border: 2px solid #000; color: #000; padding: 3px 10px;" class="border-b-4 rounded-md" size="50">
-                <button type="Submit" class="ml-2 h-8 text-justify rounded-md p-1 bg-neutral-200 text-black">Search</button>
+            <form action="" method="POST" enctype="multipart/form-data" class="flex justify-center items-center">
+                <input type="text" id="searchFile" name="searchFile" style="background-color: #E1EEFD; font-family: Lexend;" class="border-b-0 px-4 py-2 text-black rounded-full" size="50" required>
+                <button type="Submit" class="ml-3 p-2.5 rounded-full" style="background-color: #E1EEFD;">
+                    <i class="fa fa-solid fa-magnifying-glass hover:fa-beat fa-xl" style="color: #0D467F;"></i>
+                </button>
             </form>
         </div>
-        <div class="p-3 pt-4">
-            <a href="./files.html" class="p-2 bg-neutral-200 text-black rounded-md">Show All Files</a>
+        <div class="p-3 pt-3 mt-2">
+            <a href="./files.html" class="p-3 rounded-full" style="color: #0D467F ;background-color: #E1EEFD; font-style: Lexend; font-weight: 600;">Show All Files</a>
         </div>
     </div>
 </body>

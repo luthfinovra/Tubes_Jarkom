@@ -1,33 +1,39 @@
 import threading
 from socket import *
-from handler.getHandler import *
-from handler.postHandler import *
-from handler.requestHandler import *
+from handler.requestHandler import handleRequest
 
 def threadingSocket(connectionSocket):
     try:
-        request = connectionSocket.recv(1024).decode() #decode request
-        response = handleRequest(request) #handle request
-        connectionSocket.send(response.encode()) #kirimkan respon
-        connectionSocket.close() #tutup koneksi
+        # Request diterima dan decode request
+        request = connectionSocket.recv(1024).decode()
+        # Panggil handleRequest untuk mendapatkan respon yang sesuai
+        response = handleRequest(request)
+
+        # Kirimkan respon kepada klien
+        connectionSocket.send(response.encode())
+        connectionSocket.close()
     except IOError:
-        connectionSocket.send("File Not Found".encode()) #file not found error
-        connectionSocket.close() #tutup koneksi
+        # Kembalikan 'File Not Found' jika terjadi IOError
+        connectionSocket.send("File Not Found".encode())
+        connectionSocket.close()
 
 if __name__ == "__main__":
-    serverSocket = socket(AF_INET, SOCK_STREAM) #inisiasi bahwa socket menggunakan IPv4, TCP
-    serverAddress = "localhost" #inisiasi nama server
-    serverPort = 80 #menentukan port server
+    # AF_INET : IPv4, SOCK_STREAM : TCP
+    serverSocket = socket(AF_INET, SOCK_STREAM)
+    # Inisialisasi server 127.0.0.1:80 / localhost:80
+    serverAddress = "localhost"
+    serverPort = 80
 
-    #mengizinkan server untuk menggunakan socket dan alamat yang sama
-    #setelah koneksi sebelumnya berakhir 
+    # Menjadikan alamat dan Port dapat digunakan berulang
     serverSocket.setsockopt(SOL_SOCKET, SO_REUSEADDR, 1)
 
-    serverSocket.bind((serverAddress, serverPort)) #menyiapkan alamat server dan port pada socket
-    serverSocket.listen(5) #socket akan menunggu koneksi dan maksimal adalah 5 koneksi
+    # bind Alamat dan dan Port dengan koneksi maksimal sebanyak 5
+    serverSocket.bind((serverAddress, serverPort))
+    serverSocket.listen(5)
 
-    #menampilkan server adress ke terminal
+    # Menampilkan server adress dan port ke terminal
     print(f"\n\nYou can Acces Your Website in http://{serverAddress}:{serverPort}\n\n")
     while True:
-        connectionSocket, addr = serverSocket.accept() #menerima permintaan koneksi
-        threading.Thread(target=threadingSocket, args=(connectionSocket,)).start() #memulai koneksi
+        # Menerima permintaan koneksi
+        connectionSocket, addr = serverSocket.accept()
+        threading.Thread(target=threadingSocket, args=(connectionSocket,)).start()

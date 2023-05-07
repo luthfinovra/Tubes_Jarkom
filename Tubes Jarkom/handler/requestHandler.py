@@ -1,29 +1,26 @@
-from handler.getHandler import *
-from handler.postHandler import *
+from handler.getHandler import handleGET
+from handler.postHandler import handlePOST
+from handler.parsingHandler import requestParsing
 
-def handleRequest(request) :
-    # OK Response and Type of Content
+def handleRequest(request):
+    # Respon OK dan tipe konten respon
     response_line = "HTTP/1.1 200 OK\r\n"
-    content_type = "Content-Type: text/html\r\n\r\n"
-
-    # Data yang direquest
+    content_type = "Content-Type: text/html ; charset=utf-8\r\n\r\n"
     message_body = handleMethod(request)
     
-    # Concate OK response with Data
+    # Info Header dan Memberikan Respon kepada klien
     response = response_line+content_type+message_body
     return response
 
-def handleMethod(request) :
-    # Slice to Get Method and Path from the Request
-    method = request.split()[0]
-    path = request.split()[1]
+def handleMethod(request):
+    # Parse the Request
+    request = requestParsing(request)
 
-    if method == "GET":
-        # Return Data from the Path
-        return handleGET(path)
-    elif method == "POST":
-        # Handle POST to Server
-        return handlePOST(request)
+    if request["method"] == "GET":
+        # Get Response
+        return handleGET(request["uri"])
+    elif request["method"] == "POST":
+        # Post Response
+        return handlePOST(request["body"])
 
     return "Method Not Allowed"
-

@@ -4,6 +4,10 @@
             <meta charset="UTF-8">
             <meta http-equiv="X-UA-Compatible" content="IE=edge">
             <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <link rel="preconnect" href="https://fonts.googleapis.com">
+            <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+            <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@200;400;600;800&display=swap" rel="stylesheet">
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
             <script src="https://cdn.tailwindcss.com"></script>
             <title>Local Server</title>
             <style>
@@ -16,64 +20,34 @@
             }
             </style>
         </head>
-        <body style="background-color: #FFFFFF">
+        <body style="background-color: #0D467F">
             <div class="flex flex-col items-center text-white">
-                <div style="font-family: 'Lexend'; color: #383838" class="pt-20 text-4xl">
-                    Cari Data
+                <div style="font-weight: 800; font-family: Lexend;" class="pt-20 text-4xl">
+                    DATABASE
                 </div>
+                <div style="height: 0.4px; width: 300px; background-color: #898989;"></div>
+                <div style="font-weight: 200; font-family: Lexend;"class="text-sm">Kelompok 7 | IF-45-12</div>
                 <div class="pt-10 px-10">
-                    <form action="" method="POST" enctype="multipart/form-data">
-                        <input type="text" id="searchFile" name="searchFile" style="background-color: #FFFFFF; border: 2px solid #000; color: #000; padding: 3px 10px;" class="border-b-4 rounded-md" size="50">
-                        <button type="Submit" class="ml-2 h-8 text-justify rounded-md p-1 bg-neutral-200 text-black">Search</button>
+                    <form action="" method="POST" enctype="multipart/form-data" class="flex justify-center items-center">
+                        <input type="text" id="searchFile" name="searchFile" style="background-color: #E1EEFD; font-family: Lexend;" class="border-b-0 px-4 py-2 text-black rounded-full" size="50" required>
+                        <button type="Submit" class="ml-3 p-2.5 rounded-full" style="background-color: #E1EEFD;">
+                            <i class="fa fa-solid fa-magnifying-glass hover:fa-beat fa-xl" style="color: #0D467F;"></i>
+                        </button>
                     </form>
                 </div>
-                <div class="p-3 text-2xl" style="font-family: 'Comic Sans MS';">
-                    Result Search for {}
+                <div class="p-3 pt-3 mt-2">
+                    <a href="./index.html" class="p-3 rounded-full" style="color: #0D467F ;background-color: #E1EEFD; font-style: Lexend; font-weight: 600;">Close</a>
                 </div>
-                <div class="p-5"s style="color: #000 ">
-                    <table class="table-auto">
-                        <thead>
-                            <tr>
-                                <th class="px-4 py-2">No</th>
-                                <th class="px-4 py-2">Nama</th>
-                                <th class="px-4 py-2">NIM</th>
-                                <th class="px-4 py-2">Jurusan</th>
-                                <th class="px-4 py-2">Angkatan</th>
-                                <th class="px-4 py-2">Kontak</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td class="border px-4 py-2">1</td>
-                                <td class="border px-4 py-2">Muhammad Rafly Arjasubrata</td>
-                                <td class="border px-4 py-2">1301213488</td>
-                                <td class="border px-4 py-2">S1 Informatika</td>
-                                <td class="border px-4 py-2">2021</td>
-                                <td class="border px-4 py-2">raflyarj</td>
-                            </tr>
-                        </tbody>
-                        <tbody>
-                            <tr>
-                                <td class="border px-4 py-2">2</td>
-                                <td class="border px-4 py-2">Luthfi Novra</td>
-                                <td class="border px-4 py-2">1301213454</td>
-                                <td class="border px-4 py-2">S1 Informatika</td>
-                                <td class="border px-4 py-2">2021</td>
-                                <td class="border px-4 py-2">luthfinovra</td>
-                            </tr>
-                        </tbody>
-                        <tbody>
-                            <tr>
-                                <td class="border px-4 py-2">3</td>
-                                <td class="border px-4 py-2">Anggara Abdul Rahim</td>
-                                <td class="border px-4 py-2">1301210567</td>
-                                <td class="border px-4 py-2">S1 Informatika</td>
-                                <td class="border px-4 py-2">2021</td>
-                                <td class="border px-4 py-2">anggaraash</td>
-                            </tr>
-                        </tbody>
-                    </table>
+                <div class="p-3 text-xl" style="font-family: Lexend; font-weight: 300;">
+                    All Data
+                </div>
+                <div class="mb-5">
+                    <h2>Nanti List Data Disini</h2>
+                </div>
+                <div class="flex flex-col items-center gap-2 my-3">
+                    <i class="fa fa-solid fa-file-lines hover:fa-beat fa-2xl" style="color: #FFFFFF;"></i>
+                    <h5 style="font-family: 'Lexend';" class="text-white pt-2 text-center">Contoh Data</h5>
                 </div>
             </div>
         </body>
-        </html>
+    </html>
