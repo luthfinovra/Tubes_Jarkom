@@ -1,5 +1,5 @@
 def htmlRenderer(search, data):
-    # Map Corresponding File Extension
+     # Kategori file berdasarkan extension filenya
     extensions = {
         "pdf": ["pdf"],
         "txt": ["txt"],
@@ -11,10 +11,10 @@ def htmlRenderer(search, data):
         "code": ["html", "css", "js", "py"]
     }
 
-    # Map File Name to Corresponding File Extension
+    # Map File berdasarkan kategorinya
     database_file = {k: [name for name in data if name.split(".")[-1] in v] for k, v in extensions.items()}
 
-    # Map File Types to the Corresponding Icon Name
+    # Nama icon berdasarkan kategori file
     database_icon ={
         "pdf": "pdf",
         "txt": "lines",
@@ -23,8 +23,10 @@ def htmlRenderer(search, data):
         "image": "image",
         "document": "word",
         "archive": "archive",
+        "code" : "code"
     }
 
+    # HTML untuk Box Icon dan Filename
     file_icon = """
         <div class="flex flex-col items-center gap-2 my-1 pt-5 hover:bg-cyan-500 hover:rounded-lg">
             <a href="database/{}" target="blank">
@@ -34,15 +36,16 @@ def htmlRenderer(search, data):
         </div>
     """
 
-    # List of Each Element that Represent a File Icon and File Name
+    # List setiap file yang di cari kedalam Box Icon dan Filename
     list_file = ''.join([file_icon.format(value, database_icon[key], value) for key in database_file for value in database_file[key] if len(database_file[key]) > 0])
 
-    # Response ketika tidak ada file yang sesuai keyword
+    # Response HTML jika tidak ada file yang ditemukan
     if not list_file :
         list_file = """
             <div class="justify-center items-center pt-2 text-white text-center" style="font-family: Lexend;">No Data Found</div>
         """
 
+    # HTML Page yang direturn
     html_body = """
         <!DOCTYPE html>
         <html lang="en">
@@ -95,6 +98,9 @@ def htmlRenderer(search, data):
         </html>
     """
 
-    # Isi HTML dengan variabel yang sesuai
-    html_body = html_body.format(search, file_icon)
+    # Isi HTML dengan searchkey dan Box Icon
+    if search == "" :
+        html_body = html_body.format("All Files", list_file)
+    else :
+        html_body = html_body.format("Result Search For "+ search, list_file)
     return html_body

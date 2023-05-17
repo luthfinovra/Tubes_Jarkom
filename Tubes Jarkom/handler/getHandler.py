@@ -1,7 +1,8 @@
 import os
+from handler.messageHandler import *
 
 def handleGET(path):
-    # Map Requested HTML Path and Path for Every File in Database
+    # Map semua path file HTML dan file di database
     path_dict = {
         "/": "views/index.html",
         "/index.html": "views/index.html",
@@ -9,12 +10,17 @@ def handleGET(path):
         **{"/database/"+file: "database/"+file for file in os.listdir("database")}
     }
 
-    # Buka file sesuai dengan path
+    # Buka file yang dicari
     try:
+        # Render Semua list data yang ada di database dengan htmlRenderer
+        if path == "/files.html" :
+            result = [name for name in os.listdir('./database')]
+            return htmlRenderer("", result)
+
         file_name = path_dict[path]
         file = open(file_name, 'r')
     except (FileNotFoundError, KeyError):
-        file = open("views/404.html", 'r')    
+        file = open("views/404.html", 'r')
 
     # Baca file
     message_body = file.read()
