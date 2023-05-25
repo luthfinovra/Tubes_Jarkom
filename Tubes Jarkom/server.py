@@ -10,10 +10,14 @@ def threadingSocket(connectionSocket):
         response = handleRequest(request)
 
         # Kirimkan respon kepada klien
-        connectionSocket.send(response.encode())
+        # Jika respon berupa file langsung kirim kepada klien tanpa decode
+        if isinstance(response, bytes) :
+            connectionSocket.send(response)
+        else : #decode respon jika bukan sebuah file
+            connectionSocket.send(response.encode())
         connectionSocket.close()
     except IOError:
-        # Kembalikan 'File Not Found' jika terjadi IOError
+        # Return 'File Not Found' jika IOErr Raised
         connectionSocket.send("File Not Found".encode())
         connectionSocket.close()
 

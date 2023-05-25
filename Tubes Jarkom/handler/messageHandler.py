@@ -8,7 +8,7 @@ def htmlRenderer(search, data):
         "image": ["jpg", "png", "jpeg"],
         "document": ["docx", "pptx", "xlsx", "doc", "ppt", "xls"],
         "archive": ["zip", "rar"],
-        "code": ["html", "css", "js", "py"]
+        "code": ["html", "css", "js", "py", "cpp", "go"]
     }
 
     # Map File berdasarkan kategorinya
