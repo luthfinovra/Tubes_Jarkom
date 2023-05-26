@@ -4,21 +4,23 @@ from handler.requestHandler import handleRequest
 
 def threadingSocket(connectionSocket):
     try:
-        # Request diterima dan decode request
+        # Request yang diterima kemudian di decode
         request = connectionSocket.recv(1024).decode()
         # Panggil handleRequest untuk mendapatkan respon yang sesuai
         response = handleRequest(request)
 
-        # Kirimkan respon kepada klien
-        # Jika respon berupa file langsung kirim kepada klien tanpa decode
+        # Jika jenis response byte, tidak diperlukan proses encode
         if isinstance(response, bytes) :
+            # Mengirim Resoponse Kepada Client
             connectionSocket.send(response)
-        else : #decode respon jika bukan sebuah file
+        else :
+            # Encode dan kirim response ke client
             connectionSocket.send(response.encode())
+        
         connectionSocket.close()
     except IOError:
-        # Return 'File Not Found' jika IOErr Raised
-        connectionSocket.send("File Not Found".encode())
+        errorPage = open("views/404.html", "r")
+        connectionSocket.send(errorPage.encode())
         connectionSocket.close()
 
 if __name__ == "__main__":
@@ -28,10 +30,10 @@ if __name__ == "__main__":
     serverAddress = "localhost"
     serverPort = 80
 
-    # Menjadikan alamat dan Port dapat digunakan berulang
+    # Menjadikan alamat dan Port Reusable
     serverSocket.setsockopt(SOL_SOCKET, SO_REUSEADDR, 1)
 
-    # bind Alamat dan dan Port dengan koneksi maksimal sebanyak 5
+    # Bind Alamat dan Port dengan koneksi maksimal sebanyak 5
     serverSocket.bind((serverAddress, serverPort))
     serverSocket.listen(5)
 

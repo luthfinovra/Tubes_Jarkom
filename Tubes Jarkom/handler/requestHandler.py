@@ -5,13 +5,14 @@ from handler.datahandler import handleData
 import mimetypes
 
 def handleRequest(request):
-    # Respon OK dan tipe konten respon
+    # OK Response dan Content dari Web
     response_line = "HTTP/1.1 200 OK\r\n"
     path = requestParsing(request)["uri"]
 
-    # Menentukan content type respon
+    # Menentukan content type Respon
     content_type = f"Content-Type: {mimetypes.guess_type(path)[0]}\r\n\r\n"
-    # isi respon dari request
+    
+    # isi Respon dari request
     message_body = handleMethod(request)
     
     # Jika balasan request berupa file dalam format biner langsung return balasan
