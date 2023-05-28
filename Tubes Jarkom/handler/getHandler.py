@@ -47,8 +47,8 @@ def handleGET(path):
         file = open("views/404.html", 'r')
 
     # Baca file
-    print()
     message_body = file.read()
     file.close()
+    
     # Return File yang dibaca
     return message_body
